@@ -1,0 +1,10 @@
+C:\Users\MY\source\repos\Sertifi\Sertifi\bin\Debug\Sertifi.exe.config
+C:\Users\MY\source\repos\Sertifi\Sertifi\bin\Debug\Sertifi.exe
+C:\Users\MY\source\repos\Sertifi\Sertifi\bin\Debug\Sertifi.pdb
+C:\Users\MY\source\repos\Sertifi\Sertifi\obj\Debug\Sertifi.csprojAssemblyReference.cache
+C:\Users\MY\source\repos\Sertifi\Sertifi\obj\Debug\Sertifi.csproj.CoreCompileInputs.cache
+C:\Users\MY\source\repos\Sertifi\Sertifi\obj\Debug\Sertifi.exe
+C:\Users\MY\source\repos\Sertifi\Sertifi\obj\Debug\Sertifi.pdb
+C:\Users\MY\source\repos\Sertifi\Sertifi\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MY\source\repos\Sertifi\Sertifi\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MY\source\repos\Sertifi\Sertifi\obj\Debug\Sertifi.csproj.CopyComplete
