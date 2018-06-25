@@ -135,7 +135,7 @@ namespace Sertifi
                     }
                 }        
             }
-            var sortedPair = (from pair in yearCount orderby pair.Value descending, pair.Key descending select pair).FirstOrDefault();
+            var sortedPair = (from pair in yearCount orderby pair.Value descending, pair.Key ascending select pair).FirstOrDefault();
             return sortedPair.Key;
         }
 
