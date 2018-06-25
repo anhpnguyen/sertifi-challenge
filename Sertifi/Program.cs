@@ -146,21 +146,7 @@ namespace Sertifi
         /// <returns></returns>
         static int GetYearWithHighestGPA(Student[] students)
         {
-            var year = (from student in students orderby student.OverallGPA descending select student.EndYear).FirstOrDefault();
-            
-            return year;
-        }
-
-        /// <summary>
-        /// Calculate year based on index from gpa array
-        /// </summary>
-        /// <param name="student"></param>
-        /// <param name="high"></param>
-        /// <returns></returns>
-        private static int GetYearFromGPA(Student student, float high)
-        {
-            int offset = Array.IndexOf(student.GPARecord, high);
-            int year = student.StartYear + offset;
+            var year = (from student in students orderby student.OverallGPA descending select student.EndYear).FirstOrDefault();   
             return year;
         }
 
