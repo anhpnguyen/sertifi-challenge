@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Sertifi.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -111,15 +112,31 @@ namespace Sertifi
         }
 
         /// <summary>
-        /// Get the year with highest attendance by grouping by start year, then order them by the count of each year
-        /// in descending order, then sort them again by year in ascending order to get the earliest year
+        /// Increment count of each year in range(start year, end year) then return the kvp with the highest count
         /// </summary>
         /// <param name="students"></param>
         /// <returns></returns>
         static int GetHighestAttendance(Student[] students)
         {
-            var year = students.GroupBy(x => x.StartYear).Select(g => new { g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).ThenBy(y => y.Key).FirstOrDefault();
-            return year.Key;
+            var yearCount = new Dictionary<int, int>();
+            foreach(var s in students)
+            {
+                if(s.StartYear == s.EndYear)
+                {
+                    if (yearCount.ContainsKey(s.StartYear)) yearCount[s.StartYear]++;
+                    else yearCount.Add(s.StartYear, 1);
+                }
+                else
+                {
+                    for (int i = s.StartYear; i <= s.EndYear; i++)
+                    {
+                        if (yearCount.ContainsKey(i)) yearCount[i]++;
+                        else yearCount.Add(i, 1);
+                    }
+                }        
+            }
+            var sortedPair = (from pair in yearCount orderby pair.Value descending, pair.Key descending select pair).FirstOrDefault();
+            return sortedPair.Key;
         }
 
         /// <summary>
@@ -129,18 +146,9 @@ namespace Sertifi
         /// <returns></returns>
         static int GetYearWithHighestGPA(Student[] students)
         {
-            int currYear = 0;
-            float currHighestGPA = 0;
-            foreach(var student in students)
-            {
-                var high = student.OverallGPA;
-                if(high > currHighestGPA)
-                {
-                    currHighestGPA = high;
-                    currYear = GetYearFromGPA(student, high);
-                }
-            }
-            return currYear;
+            var year = (from student in students orderby student.OverallGPA descending select student.EndYear).FirstOrDefault();
+            
+            return year;
         }
 
         /// <summary>

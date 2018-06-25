@@ -12,7 +12,7 @@ namespace Sertifi.Models
         public float OverallGPA {
             get
             {
-                return GPARecord.Max();
+                return GPARecord.Average();
             }
         }
     }
